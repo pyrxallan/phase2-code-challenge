@@ -1,5 +1,3 @@
-// src/components/FilterBar.jsx
-
 import React from 'react';
 import { typeColors } from '../utils/typeColors';
 
