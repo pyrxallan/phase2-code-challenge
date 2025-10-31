@@ -1,5 +1,3 @@
-// src/components/PokemonSpecs.jsx
-
 import React from 'react';
 import { ArrowLeft, Plus } from 'lucide-react';
 import { typeColors } from '../utils/typeColors';

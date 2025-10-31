@@ -1,5 +1,3 @@
-// src/components/TeamStats.jsx
-
 import React from 'react';
 import { typeColors } from '../utils/typeColors';
 
