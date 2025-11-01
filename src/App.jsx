@@ -132,7 +132,7 @@ export default function App() {
   }
   
   return (
-    <div className="min-h-screen bg-gray-50 p-4 md:p-6">
+    <div className="bg-[url(https://pokewalls.wordpress.com/wp-content/uploads/2020/05/873frosmoth1920x1080.jpg)] bg-cover bg-center min-h-screen py-10 px-4 relative">
       <div className="max-w-7xl mx-auto">
         <header className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-1">Pokémon Team Builder</h1>
