@@ -50,27 +50,6 @@ npm run dev
 
 5. Open your browser and visit: `http://localhost:5173`
 
-## Project Structure
-
-```
-phase2-code-challenge/
-├── src/
-│   ├── components/
-│   │   ├── PokemonCard.jsx    # Individual Pokemon card display
-│   │   ├── PokemonSpecs.jsx   # Detailed Pokemon specifications
-│   │   ├── TeamStats.jsx      # Team statistics overview
-│   │   ├── FilterBar.jsx      # Pokemon filtering options
-│   │   ├── SortBar.jsx        # Pokemon sorting options
-│   │   └── MyTeam.jsx         # Current team display
-│   ├── utils/
-│   │   └── typeColors.js      # Pokemon type color mappings
-│   ├── App.jsx               # Main application component
-│   ├── main.jsx             # Application entry point
-│   └── index.css            # Global styles
-├── public/                  # Static assets
-├── index.html              # HTML entry point
-└── package.json            # Project dependencies and scripts
-```
 
 ## Team Building Rules
 
