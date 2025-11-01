@@ -15,25 +15,39 @@ export default function App() {
   const [activeFilters, setActiveFilters] = useState([]);
   const [activeSort, setActiveSort] = useState('pokedex');
   const [loading, setLoading] = useState(true);
+  // detect whether we're running against the local json-server API
+  const isLocal = (typeof window !== 'undefined') && (
+    window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+  );
+  const apiBase = isLocal ? 'http://localhost:8001' : null;
   
-  // Fetch Pokemon from db.json
+  // Fetch Pokemon from local API during development, or from a static `db.json` on static deploys
   useEffect(() => {
     const fetchPokemon = async () => {
       try {
-        const response = await fetch('http://localhost:8001/pokemon');
-        if (!response.ok) throw new Error('Failed to fetch');
-        const data = await response.json();
-        setPokemon(data);
+        if (apiBase) {
+          const response = await fetch(`${apiBase}/pokemon`);
+          if (!response.ok) throw new Error('Failed to fetch');
+          const data = await response.json();
+          setPokemon(data);
+        } else {
+          // On GitHub Pages (or any static host) fetch the bundled db.json
+          const response = await fetch('/db.json');
+          if (!response.ok) throw new Error('Failed to fetch static data');
+          const data = await response.json();
+          // JSON file may contain { "pokemon": [...] }
+          setPokemon(data.pokemon || data);
+        }
       } catch (error) {
         console.error('Error fetching Pokemon:', error);
-        setErrorMessage('Failed to load Pokémon. Please make sure json-server is running.');
+        setErrorMessage(apiBase ? 'Failed to load Pokémon. Please make sure json-server is running.' : 'Failed to load Pokémon data.');
       } finally {
         setLoading(false);
       }
     };
-    
+
     fetchPokemon();
-  }, []);
+  }, [apiBase]);
   
   useEffect(() => {
     if (errorMessage) {
@@ -71,21 +85,33 @@ export default function App() {
   };
   
   const releasePokemon = async (id) => {
-    try {
-      const response = await fetch(`http://localhost:8001/pokemon/${id}`, {
-        method: 'DELETE',
-      });
-      
-      if (response.ok) {
-        setPokemon(pokemon.filter(p => p.id !== id));
-        setTeam(team.filter(p => p.id !== id));
-        if (selectedPokemon?.id === id) {
-          setSelectedPokemon(null);
+    // If running against the json-server API, issue a DELETE request.
+    // On static deployments (GitHub Pages) this will be a client-only change.
+    if (apiBase) {
+      try {
+        const response = await fetch(`${apiBase}/pokemon/${id}`, {
+          method: 'DELETE',
+        });
+
+        if (response.ok) {
+          setPokemon(prev => prev.filter(p => p.id !== id));
+          setTeam(prev => prev.filter(p => p.id !== id));
+          if (selectedPokemon?.id === id) {
+            setSelectedPokemon(null);
+          }
+        } else {
+          throw new Error('Failed to delete');
         }
+      } catch (error) {
+        console.error('Error deleting Pokemon:', error);
+        setErrorMessage('Failed to release Pokémon. Please try again.');
       }
-    } catch (error) {
-      console.error('Error deleting Pokemon:', error);
-      setErrorMessage('Failed to release Pokémon. Please try again.');
+    } else {
+      // Static deploy: simulate removal locally and inform the user
+      setPokemon(prev => prev.filter(p => p.id !== id));
+      setTeam(prev => prev.filter(p => p.id !== id));
+      if (selectedPokemon?.id === id) setSelectedPokemon(null);
+      setErrorMessage('Note: releases are local only on static deployments.');
     }
   };
   
