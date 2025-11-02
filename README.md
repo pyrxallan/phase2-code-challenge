@@ -11,9 +11,11 @@ A dynamic React application for building your ultimate Pokemon team with type co
       <img src="https://img.shields.io/badge/Build_Your_Pokemon_Team-ffffff?style=for-the-badge&labelColor=8a2be2&logoColor=8a2be2" alt="Live Demo" />
     </a>
   </div>
+
+  "*Click the button above to build your Pokemon Team*"
+  
 </div>
 
-"*Click the button above to build your Pokemon Team*"
 
 ## Features
 
