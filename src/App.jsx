@@ -29,7 +29,7 @@ export default function App() {
           const data = await response.json();
           setPokemon(data);
         } else {
-          const response = await fetch('/db.json');
+          const response = await fetch('./db.json');
           if (!response.ok) throw new Error('Failed to fetch static data');
           const data = await response.json();
           setPokemon(data.pokemon || data);
