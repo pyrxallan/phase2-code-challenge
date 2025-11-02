@@ -4,6 +4,10 @@
 A dynamic React application for building your ultimate Pokemon team with type compatibility checks and detailed Pokemon statistics.
 </div>
 
+[![Live Demo](https://img.shields.io/badge/Build_Your_Pokemon_Team-ffffff?style=for-the-badge&labelColor=8a2be2&logoColor=8a2be2)](https://pyrxallan.github.io/phase2-code-challenge)
+
+*"Click the button above to build your Pokemon Team"*
+
 ## Features
 
 - **Real-time Team Building**: Assemble your dream team of up to 6 Pokemon
