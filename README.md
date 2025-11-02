@@ -3,10 +3,17 @@
 <div style="background: linear-gradient(45deg, #FF0000 0%, #CC0000 100%); padding: 20px; border-radius: 10px; color: white;">
 A dynamic React application for building your ultimate Pokemon team with type compatibility checks and detailed Pokemon statistics.
 </div>
+<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(45deg,#FF0000 0%,#CC0000 100%);padding:28px;border-radius:10px;color:white;">
+  <h1 style="margin:0 0 8px 0;">Pokemon Team Builder</h1>
+  <p style="margin:0 0 12px 0;">A dynamic React application for building your ultimate Pokemon team with type compatibility checks and detailed Pokemon statistics.</p>
+  <div>
+    <a href="https://pyrxallan.github.io/phase2-code-challenge" target="_blank" rel="noopener noreferrer">
+      <img src="https://img.shields.io/badge/Build_Your_Pokemon_Team-ffffff?style=for-the-badge&labelColor=8a2be2&logoColor=8a2be2" alt="Live Demo" />
+    </a>
+  </div>
+</div>
 
-[![Live Demo](https://img.shields.io/badge/Build_Your_Pokemon_Team-ffffff?style=for-the-badge&labelColor=8a2be2&logoColor=8a2be2)](https://pyrxallan.github.io/phase2-code-challenge)
-
-*"Click the button above to build your Pokemon Team"*
+"*Click the button above to build your Pokemon Team*"
 
 ## Features
 
